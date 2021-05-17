@@ -1,7 +1,7 @@
 const models = require('../models')
 
 const getAllTeams = async (request, response) => {
-  const teams = await models.Teams.findAll()
+  const teams = await models.teams.findAll()
 
   return response.send(teams)
 }
@@ -9,11 +9,9 @@ const getAllTeams = async (request, response) => {
 const getTeamById = async (request, response) => {
   const { id } = request.params
 
-  const matchingTeam = await models.Teams.findOne({ where: { id } })
+  const matchingTeam = await models.teams.findOne({ where: { id } })
 
-  return matchingTeam
-    ? response.send(matchingTeam)
-    : response.sendStatus(404)
+  return response.send(matchingTeam)
 }
 
 const saveNewTeam = async (request, response) => {
@@ -27,7 +25,7 @@ const saveNewTeam = async (request, response) => {
       .send('The following fields are required: location, mascot, abbreviation, conference, division')
   }
 
-  const newTeam = await models.Teams.create({
+  const newTeam = await models.teams.create({
     location, mascot, abbreviation, conference, division
   })
 

@@ -1,4 +1,4 @@
-const TeamsModel = (connection, Sequelize) => connection.define('teams', {
+const teamsModel = (connection, Sequelize) => connection.define('teams', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
   location: { type: Sequelize.STRING },
   mascot: { type: Sequelize.STRING },
@@ -7,4 +7,4 @@ const TeamsModel = (connection, Sequelize) => connection.define('teams', {
   division: { type: Sequelize.ENUM('North', 'South', 'East', 'West') },
 })
 
-module.exports = TeamsModel
+module.exports = teamsModel
